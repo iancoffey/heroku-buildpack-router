@@ -8,6 +8,8 @@ events {
 }
 
 stream {
+    error_log /dev/stderr;
+
     upstream web_server {
 	server 127.0.0.1:<%= ENV['PORT'] %>;
     }
