@@ -22,6 +22,8 @@ stream {
 # Listen on healthcheck port
 http {
     client_body_temp_path /tmp 1 2;
+    proxy_temp_path /tmp 1 2;
+
     server {
 	listen 0.0.0.0:<%= ENV['HEROKU_ROUTER_HEALTHCHECK_PORT'] || 6000 %>;
 
