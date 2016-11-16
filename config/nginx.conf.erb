@@ -14,12 +14,12 @@ stream {
 
     # Proxy tcp back to app
     server {
-        listen '0.0.0.0' %>:<%= ENV['HEROKU_ROUTER_HTTP_PORT'] || 5001 %> proxy_protocol;
+        listen 0.0.0.0:<%= ENV['HEROKU_ROUTER_HTTP_PORT'] || 5001 %> proxy_protocol;
         proxy_pass web_server;
     }
 
     # Listen on healthcheck port
     server {
-	listen '0.0.0.0' %>:<%= ENV['HEROKU_ROUTER_HEALTHCHECK_PORT'] || 6000 %>;
+	listen 0.0.0.0:<%= ENV['HEROKU_ROUTER_HEALTHCHECK_PORT'] || 6000 %>;
     }
 }
