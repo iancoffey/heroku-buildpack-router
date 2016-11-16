@@ -27,10 +27,12 @@ http {
 
 	server_name _;
 	access_log off;
-	location = /status {
+        location = /status {
+            proxy_temp_path /tmp 1 2;
 	    stub_status on;
 	}
-	location = /health {
+        location = /health {
+            proxy_temp_path /tmp 1 2;
 	    return 200;
         }
     }
