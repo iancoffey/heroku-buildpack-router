@@ -17,9 +17,20 @@ stream {
         listen 0.0.0.0:<%= ENV['HEROKU_ROUTER_HTTP_PORT'] || 5001 %>;
         proxy_pass web_server;
     }
+}
 
-    # Listen on healthcheck port
+# Listen on healthcheck port
+http {
     server {
 	listen 0.0.0.0:<%= ENV['HEROKU_ROUTER_HEALTHCHECK_PORT'] || 6000 %>;
+
+	server_name _;
+	access_log off;
+	location = /status {
+	    stub_status on;
+	}
+	location = /health {
+	    return 200;
+        }
     }
 }
