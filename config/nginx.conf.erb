@@ -14,7 +14,7 @@ stream {
 
     # Proxy tcp back to app
     server {
-        listen 0.0.0.0:<%= ENV['HEROKU_ROUTER_HTTP_PORT'] || 5001 %> proxy_protocol;
+        listen 0.0.0.0:<%= ENV['HEROKU_ROUTER_HTTP_PORT'] || 5001 %>;
         proxy_pass web_server;
     }
 
